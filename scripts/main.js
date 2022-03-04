@@ -41,7 +41,7 @@ response = $.ajax({ type: 'GET', url: './html/app-tablerow.html', async: false }
 global.html.table = response.responseText;
 
 // $.get('./html/appcard.html').then(function (res) { global.html.appCard = res; });
-$.get('./html/hoverinfo.html').then(function (res) { global.html.hoverinfo = res; });
+// $.get('./html/hoverinfo.html').then(function (res) { global.html.hoverinfo = res; });
 
 console.log('global', global);
 
@@ -82,7 +82,7 @@ if (settings.status != '200') {
 
     $("#hubtitle").text(settings.hubTitle);
     $.get('./super.qext').then(function (ret) {
-        $("#mashupversion").text(ret.version);
+        $(".mashupversion").text(ret.version);
     });
 
     if (settings.logoUrl.length > 0) {
@@ -348,19 +348,19 @@ function createAppIcon(appInfoObj, appVisible) {
 }
 
 
-function showAppInfo(appInfoObj) {
+// function showAppInfo(appInfoObj) {
 
-    var html = replaceDoubleCurlyBrackets(global.html.hoverinfo, appInfoObj)
-    $('#qs-page-container').append(html);
+//     var html = replaceDoubleCurlyBrackets(global.html.hoverinfo, appInfoObj)
+//     $('#qs-page-container').append(html);
 
-    const pos = $('#' + appInfoObj.domId).offset();
-    $('#div_moreinfo').css('top', pos.top + 100);
-    $('#div_moreinfo').css('left', pos.left - 120);
+//     const pos = $('#' + appInfoObj.domId).offset();
+//     $('#div_moreinfo').css('top', pos.top + 100);
+//     $('#div_moreinfo').css('left', pos.left - 120);
 
-    $('#' + appInfoObj.domId + ' .lui-icon--info').on('mouseout', function () {
-        $('.apphoverinfo').remove();
-    });
-}
+//     $('#' + appInfoObj.domId + ' .lui-icon--info').on('mouseout', function () {
+//         $('.apphoverinfo').remove();
+//     });
+// }
 
 
 function getApps(settings) {
