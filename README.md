@@ -14,4 +14,5 @@ and table view
 
 # Known limitations
 
-- Safari doesn't send Qlik Cloud cookies to backend
+- **Safari** doesn't send Qlik Cloud cookies because of a increased CORS security setting. To get it work on Safari
+  go to Settings/Safari/Privacy & Security, turn off `Prevent Cross-Site Tracking`
