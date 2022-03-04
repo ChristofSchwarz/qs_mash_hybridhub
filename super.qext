@@ -1,0 +1,12 @@
+{
+    "type": "mashup",
+    "name": "data/\\bridge Super Hub",
+    "description": "Super Hub for Qlik Sense Windows and SaaS",
+    "version": "1.0",
+    "author": "Christof Schwarz",
+    "homepage": "www.databridge.ch",
+    "keywords": "qlik-sense, hub, mashup",
+    "license": "MIT",
+    "repository": "",
+    "preview": "pics/databridgelogo.png"
+}
