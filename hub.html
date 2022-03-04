@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Bootstrap 5 -->
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="./css/custom.css" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <title>Hybrid Hub</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+  <div class="wrapper d-flex flex-column h-100">
+    <header class="header">
+      <div class="container-fluid px-0">
+        <!-- NAVIGATION BAR -->
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href id="hubtitle">/\Hybrid Hub</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!-- <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li> -->
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle lui-icon" href="#" id="navbarDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    y
+                  </a>
+                  <ul id="login-info" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li>
+                      <div class="dropdown-item disabled">Qlik Sense Windows:</div>
+                    </li>
+                    <li>
+                      <div class="dropdown-item disabled" id="qrsconnected">Connecting ...</div>
+                    </li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li>
+                      <div class="dropdown-item disabled">Qlik Cloud:</div>
+                    </li>
+                    <li>
+                      <div class="dropdown-item disabled" id="cloud-connected">Connecting ...</div>
+                    </li>
+                    <!-- <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#helpModal">Help</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="btn_settings" href="#" data-bs-toggle="modal"
+                    data-bs-target="#settingsModal">Settings</a>
+                </li>
+                <li class="nav-item dropdown alert-danger" id="signin-err">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="lui-icon">è</span> Log in first
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li>
+                      <a class="dropdown-item" id="qlikcloud-url" href target="_blank">Log in to Qlik Cloud</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href onclick="location.reload();">Retry</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+
+              <!-- <button type="button" id="btn_settings" class="btn btn-secondary" data-bs-toggle="modal"
+                  data-bs-target="#settingsModal" data-bs-whatever="@mdo" style="display:none;">Settings</button> -->
+
+              <!-- SETTINGS DIALOG -->
+
+              <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="settingsModalLabel">Settings</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form id="settings_form"></form><!-- will be filled dynamically by main.js -->
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                      <button id="btn-save-settings" type="button" class="btn btn-primary">Save</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- HELP DIALOG -->
+
+              <div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="helpModalLabel">Help</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Help is coming soon... Just pay me a few more beers...</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- FIRST SETUP MESSAGE -->
+              <!-- Button trigger modal -->
+              <button id="open-setup" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#firstSetup" style="display:none;"></button>
+
+              <!-- Modal -->
+              <div class=" modal fade" id="firstSetup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="firstSetupLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="firstSetupLabel">First time setup</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <div>This is the first time you use the Hybrid Hub.</div>
+                      <div>Trying to create settings file ...</div>
+                      <div id="settings-success" class="d-none alert alert-success d-flex align-items-center fade show">
+                        <span class="lui-icon">m</span><strong class="mx-2">Success!</strong> Successfully created
+                        settings file. <a href="./hub.html?settings" class="alert-link">Open settings.</a>
+                      </div>
+                      <div id="settings-error" class="d-none alert alert-danger d-flex align-items-center fade show">
+                        <span class="lui-icon">&egrave;</span><strong class="mx-2">Error!</strong>Could not create
+                        settings file. Are you ContentAdmin or RootAdmin?
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- LIGHT SWITCH -->
+
+              <div class="form-check form-switch ms-auto mt-3 me-3">
+                <label class="form-check-label ms-3" for="lightSwitch">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                    class="bi bi-brightness-high" viewBox="0 0 16 16">
+                    <path
+                      d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
+                  </svg>
+                </label>
+                <input class="form-check-input" type="checkbox" id="lightSwitch" data-bs-toggle="tooltip"
+                  data-bs-placement="bottom" title="Experimental feature" />
+              </div>
+              <!-- <div class="spinner-border text-light" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-border text-dark" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div> -->
+
+
+            </div>
+          </div>
+        </nav>
+
+        <!------------- FILTER ------------->
+
+        <div class="container-fluid" id="filter-container">
+          <div class="row">
+            <div class="col-sm-2">
+              <h6>
+                <span id="refresh" class="d-none lui-icon">&ocirc;</span>
+                Apps
+                <span id="appcounter"></span>
+              </h6>
+            </div>
+
+
+            <div class="col-sm-3" id="checkboxes-source">
+              <!-- <h4>Apps</h4> -->
+
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="checkbox-internal" value="option1" checked>
+                <label class="form-check-label" for="checkbox-internal">Internal</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="checkbox-cloud" value="option2" checked>
+                <label class="form-check-label" for="checkbox-cloud">Cloud</label>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="select_stream">
+              </select>
+            </div>
+
+            <div class="col-sm-3">
+              <form class="d-flex">
+                <input id="searchtxt" class="form-control form-control-sm me-2" type="search" placeholder="Search"
+                  aria-label="Search">
+              </form>
+            </div>
+
+            <div class="col-sm-1">
+              <!-- <span>View&nbsp;</span> -->
+              <div id="view-mode" class="btn-group  btn-group-sm" role="group"
+                aria-label="Basic radio toggle button group" style="width: 90%; max-width: 100px;">
+                <input type="radio" class="btn-check" name="btnradio" id="show-cards" autocomplete="off" checked>
+                <label class="btn btn-outline-secondary lui-icon" for="show-cards">&igrave;</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="show-table" autocomplete="off">
+                <label class="btn btn-outline-secondary lui-icon" for="show-table"> &apos;</label>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </header>
+
+    <main class="content flex-grow-1 overflow-auto hh-main">
+
+      <!-- CARD VIEW -->
+      <div class="container" id="appcards-container">
+        <div class="row" id="applist-cards">
+        </div>
+      </div>
+
+      <!-- TABLE -->
+      <div class="mx-5" id="apptable-container" style="display: none;">
+        <table class="table">
+          <thead>
+            <tr class="table-light">
+              <th>Application</th>
+              <th>Stream</th>
+              <th>Owner</th>
+            </tr>
+          </thead>
+          <tbody id="applist-table">
+          </tbody>
+        </table>
+      </div>
+
+      <!-- No app warning  -->
+      <div id="zero-apps" class="m-4" style="display:none;">
+        <div class="alert alert-warning  fade show">
+          Currently your filters result into 0 apps to be shown.</a>.
+        </div>
+      </div>
+
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted text-center">(c) 2022 by
+          <a href="https://www.databridge.ch" target="_blank">data/\bridge</a>
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="./scripts/switch.js"></script>
+  <script src="./scripts/main.js"></script>
+</body>
+
+</html>
