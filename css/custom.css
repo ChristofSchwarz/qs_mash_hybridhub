@@ -1,0 +1,129 @@
+@font-face {
+  font-family: LUI icons;
+  src: url(../css/lui-icons.woff) format("woff"),
+    url(../css/lui-icons.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+.lui-icon {
+  font-family: "LUI icons";
+}
+
+#lightSwitch {
+  transform: scale(1.2);
+}
+
+.hh-thumb {
+  width: 100%;
+  height: 160px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.hh-app-cards {
+  margin: 10px 0;
+}
+
+#filter-container {
+  border-top: 1px solid gray;
+  padding-top: 10px;
+}
+
+#appcards-container {
+  margin-top: 20px;
+}
+
+#apptable-container {
+  margin-top: 20px;
+}
+
+.hh-ellipsis {
+  display: block;
+  position: relative;
+  max-height: 2.8em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-wrap: break-word;
+  font-size: 10pt;
+}
+
+.card-body {
+  padding: 5px;
+  height: 56px;
+}
+
+.thumb {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-bottom: 1px gray solid;
+}
+
+.default-thumb {
+  background-image: url("../pics/default-thumb.svg");
+}
+
+.dropdown-menu {
+  font-size: 9pt;
+}
+
+#signin-err {
+  margin-left: 25px;
+  display: none;
+}
+
+#view-mode [for] {
+  font-size: 11pt;
+}
+
+#login-info .dropdown-item {
+  color: #444;
+}
+
+.hh-cloudicon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+#refresh {
+  color: darkgrey;
+  cursor: pointer;
+}
+
+#refresh:hover {
+  color: #444;
+}
+
+.hh-app-cards .bg-light {
+  background-color: white !important;
+}
+
+.hh-main {
+  overflow: auto;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.rotate {
+  animation-name: rotate;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  transform: rotate(1turn);
+  -webkit-animation-name: rotate;
+  -webkit-animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -webkit-transform: rotate(1turn);
+}
