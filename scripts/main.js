@@ -81,7 +81,7 @@ if (settings.status != '200') {
     });
 
     $("#hubtitle").text(settings.hubTitle);
-    $.get('./hybrid.qext').then(function (ret) {
+    $.get('./super.qext').then(function (ret) {
         $("#mashupversion").text(ret.version);
     });
 

@@ -7,7 +7,7 @@
   if (!lightSwitch) {
     return;
   }
-  
+
   /**
    * @function darkmode
    * @summary: changes the theme to 'dark mode' and save settings to local stroage.
@@ -18,6 +18,7 @@
       element.className = element.className.replace(/-light/g, "-dark");
     });
 
+    document.getElementById("logo").src = "./pics/dblogo-white.svg";
     document.body.classList.add("bg-dark");
 
     if (document.body.classList.contains("text-dark")) {
@@ -25,9 +26,9 @@
     } else {
       document.body.classList.add("text-light");
     }
-    
+
     // set light switch input to true
-    if (! lightSwitch.checked) {
+    if (!lightSwitch.checked) {
       lightSwitch.checked = true;
     }
     localStorage.setItem("lightSwitch", "dark");
@@ -42,6 +43,7 @@
       element.className = element.className.replace(/-dark/g, "-light");
     });
 
+    document.getElementById("logo").src = "./pics/dblogo-black.svg";
     document.body.classList.add("bg-light");
 
     if (document.body.classList.contains("text-light")) {
@@ -49,13 +51,13 @@
     } else {
       document.body.classList.add("text-dark");
     }
-    
+
     if (lightSwitch.checked) {
       lightSwitch.checked = false;
     }
     localStorage.setItem("lightSwitch", "light");
   }
-  
+
   /**
    * @function onToggleMode
    * @summary: the event handler attached to the switch. calling @darkMode or @lightMode depending on the checked state.
@@ -67,7 +69,7 @@
       lightMode();
     }
   }
-  
+
   /**
    * @function getSystemDefaultTheme
    * @summary: get system default theme by media query
@@ -85,15 +87,15 @@
     if (settings == null) {
       settings = getSystemDefaultTheme();
     }
-    
+
     if (settings == "dark") {
       lightSwitch.checked = true;
     }
-    
+
     lightSwitch.addEventListener("change", onToggleMode);
     onToggleMode();
   }
-  
+
   setup();
-  
+
 })();

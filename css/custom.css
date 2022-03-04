@@ -108,4 +108,19 @@
 
 .footer {
   margin-top: 15px;
+  border-top: 1px solid gray;
+}
+
+#logo {
+  width: 150px;
+  padding-right: 20px;
+}
+
+#select_stream-parent {
+  font-size: 14px;
+}
+
+#select_stream-parent .placeholder {
+  background-color: white;
+  color: black;
 }

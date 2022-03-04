@@ -14,7 +14,12 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" href="./css/custom.css" />
+  <!-- Slim Select ... make searchable dropdown select -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.1/slimselect.min.js"></script>
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.1/slimselect.min.css">
+
+  <link rel="stylesheet" type="text/css" href="./css/custom.css" />
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <title>Super Hub</title>
@@ -28,7 +33,8 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="container-fluid">
-            <a class="navbar-brand" href id="hubtitle">/\Super Hub</a>
+            <img id="logo" src="./pics/dblogo-black.svg">
+            <a class="navbar-brand" href id="hubtitle">Super Hub</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
               aria-label="Toggle navigation">
@@ -125,7 +131,13 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                      <p>Help is coming soon... Just pay me a few more beers...</p>
+                      <p>Current Version: <span class="mashupversion"></span></p>
+                      <p><span class="lui-icon">£</span> Help is coming soon...</p>
+                      <p>Meanwhile, did you check out the
+                        <a href="https://github.com/ChristofSchwarz/qs_mash_superhub/blob/main/README.md"
+                          target="_blank">readme</a>
+                        file?
+                      </p>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
@@ -204,10 +216,9 @@
               </h6>
             </div>
 
+            <!-- source checkboxes - internal / cloud  -->
 
             <div class="col-sm-3" id="checkboxes-source">
-              <!-- <h4>Apps</h4> -->
-
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="checkbox" id="checkbox-internal" value="option1" checked>
                 <label class="form-check-label" for="checkbox-internal">Internal</label>
@@ -217,17 +228,25 @@
                 <label class="form-check-label" for="checkbox-cloud">Cloud</label>
               </div>
             </div>
-            <div class="col-sm-3">
-              <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="select_stream">
+
+            <!-- Streams / spaces selection -->
+
+            <div class="col-sm-3" id="select_stream-parent">
+              <!-- <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="select_stream"> -->
+              <select id="select_stream"></select>
               </select>
             </div>
 
+            <!-- search within app titles -->
+
             <div class="col-sm-3">
               <form class="d-flex">
-                <input id="searchtxt" class="form-control form-control-sm me-2" type="search" placeholder="Search"
-                  aria-label="Search">
+                <input id="searchtxt" class="form-control form-control-sm me-2" type="search"
+                  placeholder="Search app title" aria-label="Search app title">
               </form>
             </div>
+
+            <!-- view toggle - cards / table mode -->
 
             <div class="col-sm-1">
               <!-- <span>View&nbsp;</span> -->
@@ -283,6 +302,7 @@
       <div class="container">
         <p class="text-muted text-center">(c) 2022 by
           <a href="https://www.databridge.ch" target="_blank">data/\bridge</a>
+          - Version <span class="mashupversion"></span>
         </p>
       </div>
     </footer>
@@ -290,6 +310,11 @@
 
   <script src="./scripts/switch.js"></script>
   <script src="./scripts/main.js"></script>
+  <script>
+    new SlimSelect({
+      select: '#select_stream'
+    });
+  </script>
 </body>
 
 </html>
