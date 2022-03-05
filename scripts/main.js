@@ -19,11 +19,14 @@ var global = {
         regexSearch: '.*',
         regexSource: '.*',
         regexStream: '.*'
-    }
+    },
+    bgTheme: 'light',
+    fontTheme: 'dark'
 };
 
 
 const defaultSettings = {
+    useQlikCloud: true,
     qlikCloudUrl: "https://your-tenant.us.qlikcloud.com",
     webIntegrationId: "4-2ZqazVrCY9uu4UNlFrBFyjBRlkv921",
     hubTitle: "Hybrid Hub",
@@ -52,7 +55,6 @@ var settings = $.ajax({ type: 'GET', url: '../../content/Default/' + settingsFil
 
 if (settings.status != '200') {
     createSettings();
-
 } else {
     settings = { ...defaultSettings, ...settings.responseJSON };
     console.log('settings', settings);
@@ -61,7 +63,7 @@ if (settings.status != '200') {
     qrsAPI(
         'GET',
         '/qrs/about',
-        global
+        true
     ).then(function (res) {
         $("#qrsconnected").html('Connected as <span id="whoami-win"></span>');
     }).catch(function (err) {
@@ -85,9 +87,9 @@ if (settings.status != '200') {
         $(".mashupversion").text(ret.version);
     });
 
-    if (settings.logoUrl.length > 0) {
-        $('#logo').css("background-image", "url(" + settings.logoUrl + ")");
-    }
+    // if (settings.logoUrl.length > 0) {
+    //     $('#logo').css("background-image", "url(" + settings.logoUrl + ")");
+    // }
 
     $('#qlik-saas-login').click(function () {
         $("#qlik-saas-connected").html(
@@ -136,7 +138,7 @@ if (settings.status != '200') {
 
     $("#refresh").on('click', function () {
         streamId = $('#select_stream').find(":selected").val();
-        getApps(settings, streamId);
+        getApps(settings);
         getStreamsAndSpaces(settings, streamId);
         getCloudUsers(settings);
     });
@@ -144,6 +146,14 @@ if (settings.status != '200') {
 
     $('#btn_settings').on('click', function () {
         editSettings(settings);
+    });
+
+    $('#theme-dark').on('click', function () {
+        darkMode(settings);
+    });
+
+    $('#theme-light').on('click', function () {
+        lightMode(settings);
     });
 
     // initialize Bootstrap tooltips
@@ -183,6 +193,8 @@ if (settings.status != '200') {
         getApps(settings);
         filterAppList();
     }
+
+    if (!settings.useQlikCloud) $('.if-qlik-cloud').hide();
 
 }
 
@@ -235,7 +247,7 @@ function qlikCloudLoopData(endpoint, settings, handler) {
 
 }
 
-function qrsAPI(method, endpoint, global, asPromise = false, body) {
+function qrsAPI(method, endpoint, asPromise = false, body) {
 
     const xrfKey = Math.random().toString().substr(2).repeat(16).substr(0, 16);
     var arg = {
@@ -278,7 +290,7 @@ function whoAmIOnCloud(settings) {
 function getStreamsAndSpaces(settings, streamId) {
 
     $('#select_stream').find(":selected").val(); // remember current selection
-    $('#select_stream').html('<option value=".*">* All Streams and Spaces</option>');
+    $('#select_stream').html('<option value=".*">* All streams / spaces</option>');
 
     function sortSelectOptions() {
         // sort option elements
@@ -298,7 +310,7 @@ function getStreamsAndSpaces(settings, streamId) {
 
     // get list of streams
     // if (!selectedOption && selectedOption.match(guid_pattern) != null) {
-    qrsAPI('GET', "/qrs/stream", global, true)
+    qrsAPI('GET', "/qrs/stream", true)
         .then(function (streams) {
             streams.forEach(stream => {
                 $('#select_stream')
@@ -348,19 +360,6 @@ function createAppIcon(appInfoObj, appVisible) {
 }
 
 
-// function showAppInfo(appInfoObj) {
-
-//     var html = replaceDoubleCurlyBrackets(global.html.hoverinfo, appInfoObj)
-//     $('#qs-page-container').append(html);
-
-//     const pos = $('#' + appInfoObj.domId).offset();
-//     $('#div_moreinfo').css('top', pos.top + 100);
-//     $('#div_moreinfo').css('left', pos.left - 120);
-
-//     $('#' + appInfoObj.domId + ' .lui-icon--info').on('mouseout', function () {
-//         $('.apphoverinfo').remove();
-//     });
-// }
 
 
 function getApps(settings) {
@@ -374,7 +373,7 @@ function getApps(settings) {
     qrsAPI(
         'GET',
         '/qrs/app/full', //+ (streamId == '.*' ? '' : '?filter=stream.id eq ' + streamId),
-        global, true
+        true
     ).then(res => {
         if (settings.browserConsoleLog) console.log('qrs applist', res);
         res.forEach(app => {
@@ -391,7 +390,9 @@ function getApps(settings) {
                 link: global.baseUrl + '/sense/app/' + app.id,
                 thumbnail: app.thumbnail ? app.thumbnail : null,
                 source: 'internal',
-                styleCloudIcon: 'display:none;'  // do not display cloud icon
+                styleCloudIcon: 'display:none;',  // do not display cloud icon
+                bgTheme: global.bgTheme,
+                fontTheme: global.fontTheme
             },
                 isAppVisible(app.name, app.stream ? app.stream.id : 'Personal', 'internal')
             );
@@ -419,7 +420,9 @@ function getApps(settings) {
                     link: settings.qlikCloudUrl + '/sense/app/' + app.resourceId,
                     thumbnail: app.thumbnailId ? settings.qlikCloudUrl + app.thumbnailId : null,
                     source: 'cloud',
-                    styleCloudIcon: '' // shows the cloud icon 
+                    styleCloudIcon: '', // shows the cloud icon 
+                    bgTheme: global.bgTheme,
+                    fontTheme: global.fontTheme
                 },
                     isAppVisible(app.name, app.spaceId || 'Personal', 'cloud')
                 );
@@ -469,7 +472,6 @@ function whoAmIOnWindows() {
             qrsAPI(
                 'GET',
                 "/qrs/user/full?filter=userId eq '" + global.userWin.split('\\')[1] + "' and userDirectory eq '" + global.userWin.split('\\')[0] + "'",
-                global,
                 true
             ).then(function (qrsUserInfo) {
                 global.userWinRoles = qrsUserInfo[0].roles;
@@ -522,7 +524,7 @@ function editSettings(settings) {
         }
     });
 
-    $('#btn-save-settings').on('click', async function () {
+    $('#btn-save-settings').on('click', function () {
         // Save settings
         var newJson = {};
         console.log('Saving settings');
@@ -537,10 +539,9 @@ function editSettings(settings) {
 
         // const res = functions.qrsCall('POST', global.qrsUrl + 'ContentLibrary/Default/uploadfile'
         //     + '?externalpath=' + settingsFile + '&overwrite=true', httpHeader, JSON.stringify(newJson));
-        await qrsAPI(
+        qrsAPI(
             'POST',
             '/qrs/ContentLibrary/Default/uploadfile?externalpath=' + settingsFile + '&overwrite=true',
-            global,
             false,
             JSON.stringify(newJson)
         )
@@ -554,7 +555,6 @@ function createSettings() {
     qrsAPI(
         'POST',
         '/qrs/ContentLibrary/Default/uploadfile?externalpath=' + settingsFile,
-        global,
         true,
         JSON.stringify(defaultSettings)
     ).then(function (res) {
@@ -585,4 +585,40 @@ function getCloudUsers(settings) {
         global.cloudCache.users[user.id] = user.name; // add user to cloudCache
     });
     // console.warn('cloud users', global.cloudCache.users);
+}
+
+function lightMode(settings) {
+    document.querySelectorAll(".bg-dark").forEach((element) => {
+        element.className = element.className.replace(/-dark/g, "-light");
+    });
+    document.querySelectorAll(".table-dark").forEach((element) => {
+        element.className = element.className.replace(/-dark/g, "-light");
+    });
+    document.querySelectorAll(".link-light").forEach((element) => {
+        element.className = element.className.replace(/-light/g, "-dark");
+    });
+    $('#logo').attr('src', "./pics/dblogo-black.svg");
+    $('body').removeClass('bg-dark');
+    $('body').addClass('text-dark').removeClass('text-light');
+
+    global.bgTheme = 'light';
+    global.fontTheme = 'dark';
+}
+
+function darkMode(settings) {
+    document.querySelectorAll(".bg-light").forEach((element) => {
+        element.className = element.className.replace(/-light/g, "-dark");
+    });
+    document.querySelectorAll(".table-light").forEach((element) => {
+        element.className = element.className.replace(/-light/g, "-dark");
+    });
+    document.querySelectorAll(".link-dark").forEach((element) => {
+        element.className = element.className.replace(/-dark/g, "-light");
+    });
+    $('#logo').attr('src', "./pics/dblogo-white.svg");
+    $('body').addClass('bg-dark');
+    $('body').addClass('text-light').removeClass('text-dark');
+
+    global.bgTheme = 'dark';
+    global.fontTheme = 'light';
 }

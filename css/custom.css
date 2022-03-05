@@ -71,7 +71,7 @@
 }
 
 #signin-err {
-  margin-left: 25px;
+  margin-right: 25px;
   display: none;
 }
 
@@ -81,6 +81,11 @@
 
 #login-info .dropdown-item {
   color: #444;
+}
+
+#login-info {
+  left: auto;
+  right: 0;
 }
 
 .hh-cloudicon {
@@ -123,4 +128,20 @@
 #select_stream-parent .placeholder {
   background-color: white;
   color: black;
+}
+
+.hh-app-table {
+  font-size: 14px;
+}
+
+.navbar-nav {
+  margin-left: auto;
+}
+
+#helpModal .modal-content {
+  color: #444;
+}
+
+#settingsModal .modal-content {
+  color: #444;
 }

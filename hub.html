@@ -9,11 +9,10 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <!-- Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
-
   <!-- Slim Select ... make searchable dropdown select -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.1/slimselect.min.js"></script>
   <link rel="stylesheet" type="text/css"
@@ -34,7 +33,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="container-fluid">
             <img id="logo" src="./pics/dblogo-black.svg">
-            <a class="navbar-brand" href id="hubtitle">Super Hub</a>
+            <div class="navbar-brand" id="hubtitle">Super Hub</div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
               aria-label="Toggle navigation">
@@ -42,60 +41,6 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <!-- <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li> -->
-
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle lui-icon" href="#" id="navbarDropdown" role="button"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    y
-                  </a>
-                  <ul id="login-info" class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li>
-                      <div class="dropdown-item disabled">Qlik Sense Windows:</div>
-                    </li>
-                    <li>
-                      <div class="dropdown-item disabled" id="qrsconnected">Connecting ...</div>
-                    </li>
-                    <li>
-                      <hr class="dropdown-divider">
-                    </li>
-                    <li>
-                      <div class="dropdown-item disabled">Qlik Cloud:</div>
-                    </li>
-                    <li>
-                      <div class="dropdown-item disabled" id="cloud-connected">Connecting ...</div>
-                    </li>
-                    <!-- <li>
-                      <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li> -->
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#helpModal">Help</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="btn_settings" href="#" data-bs-toggle="modal"
-                    data-bs-target="#settingsModal">Settings</a>
-                </li>
-                <li class="nav-item dropdown alert-danger" id="signin-err">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    <span class="lui-icon">&egrave;</span> Log in to cloud
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li>
-                      <a class="dropdown-item" id="qlikcloud-url" href target="_blank">Log in to Qlik Cloud</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href onclick="location.reload();">Retry</a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
 
               <!-- <button type="button" id="btn_settings" class="btn btn-secondary" data-bs-toggle="modal"
                   data-bs-target="#settingsModal" data-bs-whatever="@mdo" style="display:none;">Settings</button> -->
@@ -179,26 +124,81 @@
                 </div>
               </div>
 
-              <!-- LIGHT SWITCH -->
+              <ul class="navbar-nav  mb-2 mb-lg-0">
+                <!-- <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li> -->
 
-              <div class="form-check form-switch ms-auto mt-3 me-3">
-                <label class="form-check-label ms-3" for="lightSwitch">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-                    class="bi bi-brightness-high" viewBox="0 0 16 16">
-                    <path
-                      d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
-                  </svg>
-                </label>
-                <input class="form-check-input" type="checkbox" id="lightSwitch" data-bs-toggle="tooltip"
-                  data-bs-placement="bottom" title="Experimental feature" />
-              </div>
-              <!-- <div class="spinner-border text-light" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div>
-              <div class="spinner-border text-dark" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div> -->
+                <li class="nav-item dropdown alert-danger if-qlik-cloud" id="signin-err">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="lui-icon">&egrave;</span> Log in to cloud
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li>
+                      <a class="dropdown-item" id="qlikcloud-url" href target="_blank">Log in to Qlik Cloud</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href onclick="location.reload();">Retry</a>
+                    </li>
+                  </ul>
+                </li>
 
+
+                <li class="nav-item">
+                  <a class="nav-link" id="btn_settings" href="#" data-bs-toggle="modal"
+                    data-bs-target="#settingsModal">Settings</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Theme
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                    <li>
+                      <div class="dropdown-item" id="theme-light">Light</div>
+                    </li>
+                    <li>
+                      <div class="dropdown-item" id="theme-dark">Dark</div>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#helpModal">Help</a>
+                </li>
+
+
+                <!-- Menu Avatar -->
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle lui-icon" href="#" id="navbarDropdown3" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    y
+                  </a>
+                  <ul id="login-info" class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                    <li>
+                      <div class="dropdown-item disabled">Qlik Sense Windows:</div>
+                    </li>
+                    <li>
+                      <div class="dropdown-item disabled" id="qrsconnected">Connecting ...</div>
+                    </li>
+                    <li class="if-qlik-cloud">
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li class="if-qlik-cloud">
+                      <div class="dropdown-item disabled">Qlik Cloud:</div>
+                    </li>
+                    <li class="if-qlik-cloud">
+                      <div class="dropdown-item disabled" id="cloud-connected">Connecting ...</div>
+                    </li>
+                    <!-- <li>
+                                      <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+                  </ul>
+                </li>
+              </ul>
 
             </div>
           </div>
@@ -219,11 +219,11 @@
             <!-- source checkboxes - internal / cloud  -->
 
             <div class="col-sm-3" id="checkboxes-source">
-              <div class="form-check form-check-inline">
+              <div class="form-check form-check-inline  if-qlik-cloud">
                 <input class="form-check-input" type="checkbox" id="checkbox-internal" value="option1" checked>
                 <label class="form-check-label" for="checkbox-internal">Internal</label>
               </div>
-              <div class="form-check form-check-inline">
+              <div class="form-check form-check-inline  if-qlik-cloud">
                 <input class="form-check-input" type="checkbox" id="checkbox-cloud" value="option2" checked>
                 <label class="form-check-label" for="checkbox-cloud">Cloud</label>
               </div>
@@ -301,14 +301,14 @@
     <footer class="footer">
       <div class="container">
         <p class="text-muted text-center">(c) 2022 by
-          <a href="https://www.databridge.ch" target="_blank">data/\bridge</a>
+          <a href="https://www.databridge.ch" target="_blank" class="link-dark">data/\bridge</a>
           - Version <span class="mashupversion"></span>
         </p>
       </div>
     </footer>
   </div>
 
-  <script src="./scripts/switch.js"></script>
+  <!-- <script src="./scripts/switch.js"></script> -->
   <script src="./scripts/main.js"></script>
   <script>
     new SlimSelect({

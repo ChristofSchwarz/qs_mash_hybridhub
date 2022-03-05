@@ -1,6 +1,9 @@
-<tr id="{{domId}}" class="table-light hh-app-table" data-name="{{appName}}" data-source="{{source}}"
+<tr id="{{domId}}" class="table-{{bgTheme}} hh-app-table" data-name="{{appName}}" data-source="{{source}}"
     data-streamid="{{streamId}}">
-    <td><a href="{{link}}" target="_blank">{{appName}}</a><span style="{{styleCloudIcon}}"> &#x2601;</span></td>
+    <td>
+        <a class="link-{{fontTheme}}" href="{{link}}" target="_blank">{{appName}}</a>
+        <span style="{{styleCloudIcon}}"> &#x2601;</span>
+    </td>
     <td>{{stream}}</td>
     <td>{{owner}}</td>
 </tr>
