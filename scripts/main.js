@@ -1,6 +1,6 @@
 
 // Global constants
-const settingsFile = 'settings_hybridhub.json';
+const settingsFile = 'settings_superhub.json';
 const guid_pattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
 var global = {
@@ -29,7 +29,7 @@ const defaultSettings = {
     useQlikCloud: true,
     qlikCloudUrl: "https://your-tenant.us.qlikcloud.com",
     webIntegrationId: "4-2ZqazVrCY9uu4UNlFrBFyjBRlkv921",
-    hubTitle: "Hybrid Hub",
+    hubTitle: "Super Hub",
     //logoUrl: "./pics/dblogo.svg",
     browserConsoleLog: true,
 };
@@ -83,6 +83,7 @@ if (settings.status != '200') {
     });
 
     $("#hubtitle").text(settings.hubTitle);
+    $('title').text(settings.hubTitle);
     $.get('./super.qext').then(function (ret) {
         $(".mashupversion").text(ret.version);
     });
@@ -144,10 +145,6 @@ if (settings.status != '200') {
     });
 
 
-    $('#btn_settings').on('click', function () {
-        editSettings(settings);
-    });
-
     $('#theme-dark').on('click', function () {
         darkMode(settings);
     });
@@ -175,6 +172,11 @@ if (settings.status != '200') {
         $('#btn_settings').trigger('click');
         editSettings(settings);
     } else {
+
+        $('#btn_settings').on('click', function () {
+            editSettings(settings);
+        });
+
         if (params.has('stream')) {
             global.filters.regexStream = params.get('stream');
             console.log('set global.filters.regexStream because of query-param "stream"', global.filters.regexStream);
