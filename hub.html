@@ -42,13 +42,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-              <!-- <button type="button" id="btn_settings" class="btn btn-secondary" data-bs-toggle="modal"
-                  data-bs-target="#settingsModal" data-bs-whatever="@mdo" style="display:none;">Settings</button> -->
-
               <!-- SETTINGS DIALOG -->
-              <!-- <button id="btn_settings" type="button" class="btn btn-link" data-bs-toggle="modal"
-                data-bs-target="#settingsModal" style="display:none;">Settings</button> -->
-
               <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
@@ -69,7 +63,6 @@
               </div>
 
               <!-- HELP DIALOG -->
-
               <div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
@@ -93,12 +86,11 @@
                 </div>
               </div>
 
-              <!-- FIRST SETUP MESSAGE -->
-              <!-- Button trigger modal -->
+              <!-- FIRST SETUP DIALOG -->
+              <!-- invisible button, triggered by main.js -->
               <button id="open-setup" type="button" class="btn btn-link" data-bs-toggle="modal"
                 data-bs-target="#firstSetup" style="display:none;"></button>
 
-              <!-- Modal -->
               <div class=" modal fade" id="firstSetup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
                 aria-labelledby="firstSetupLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -126,10 +118,9 @@
                 </div>
               </div>
 
+
+              <!-- RIGHT SIDE NAVIGATION MENU -->
               <ul class="navbar-nav  mb-2 mb-lg-0">
-                <!-- <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li> -->
 
                 <li class="nav-item dropdown alert-danger if-qlik-cloud" id="signin-err">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -194,10 +185,7 @@
                     <li class="if-qlik-cloud">
                       <div class="dropdown-item disabled" id="cloud-connected">Connecting ...</div>
                     </li>
-                    <!-- <li>
-                                      <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+
                   </ul>
                 </li>
               </ul>
