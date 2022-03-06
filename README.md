@@ -2,13 +2,18 @@
 
 Version history [here](./version-history.csv)
 
-The data/\bridge Super Hub shows Qlik Sense apps from two environments in one place
+The data/\bridge Superhub is a very modern, Bootstrap 5 webpage that shows Qlik Sense apps from two environments in one place
 
 - from Qlik Sense Windows server
 - from Qlik Cloud tenant
 
-You have a couple of filter possibilities, on stream, a text search, the source type. You have an icon card view
-and table view
+You have a couple of filter possibilities, per environment (cloud/internal), based on streams/spaces, and a text search. You have an icon card view
+and table view, as well as a light and a dark theme.
+
+ ![screenshot](./pics/superhub-anim.gif "screenshot")
+ 
+This version is free of charge and use-as-is. However, we are happy to add features per request and to upgrade to a supported version. Get in touch
+with us at insight-sales@databridge.ch
 
 # Links
 
