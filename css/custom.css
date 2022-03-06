@@ -145,3 +145,7 @@
 #settingsModal .modal-content {
   color: #444;
 }
+
+#btn_settings {
+  cursor: pointer;
+}
