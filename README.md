@@ -1,5 +1,7 @@
 # data/\bridge Super Hub
 
+Version history [here](./version-history.csv)
+
 The data/\bridge Super Hub shows Qlik Sense apps from two environments in one place
 
 - from Qlik Sense Windows server
